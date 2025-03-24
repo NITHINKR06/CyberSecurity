@@ -1,6 +1,6 @@
 # Cloning a Repository with Sparse Checkout
 
-> **Sparse checkout** allows you to clone a repository and only check out the files and folders relevant to your work. This approach is especially useful when working with large repositories where you need only a specific subset of the content.
+ **Sparse checkout** allows you to clone a repository and only check out the files and folders relevant to your work. This approach is especially useful when working with large repositories where you need only a specific subset of the content.
 
 ---
 
