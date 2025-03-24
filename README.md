@@ -45,7 +45,7 @@ Check out the specific branch (e.g., main) to load the selected folder into your
 git checkout main
 ```
 
-#### 📖 Explanation
+# 📖 Explanation
 ## 🛠️ Clone without Checkout:
 This command clones the repository without downloading file contents, making it a fast option for large repositories.
 
