@@ -1,35 +1,50 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h> // for sleep()
-
-#define BUCKET_CAPACITY 10
-#define LEAK_RATE 1   // Packets per second
+#include <windows.h> // Windows-specific sleep
 
 int main() {
-    int bucket = 0; // current number of packets in the bucket
+    int bucket_size, output_rate, n, i;
+    int packets[100]; // array to hold incoming packets
+    int total_packets = 0, dropped = 0;
 
-    // Simulation: adding packets and leaking from the bucket
-    for (int time = 0; time < 20; time++) {
-        // Simulate packet arrival (you can change the arrival logic as needed)
-        if (bucket < BUCKET_CAPACITY) {
-            bucket++;  // a packet arrives
-            printf("Time %d: Packet added. Bucket size: %d\n", time, bucket);
+    printf("Enter bucket size: ");
+    scanf("%d", &bucket_size);
+    printf("Enter output rate: ");
+    scanf("%d", &output_rate);
+    printf("Enter number of seconds to simulate: ");
+    scanf("%d", &n);
+
+    // simulate packet arrival for n seconds
+    for (i = 0; i < n; i++) {
+        int packet_size;
+        printf("Enter number of packets at second %d: ", i + 1);
+        scanf("%d", &packet_size);
+
+        if (packet_size + total_packets > bucket_size) {
+            dropped = packet_size + total_packets - bucket_size;
+            total_packets = bucket_size;
         } else {
-            printf("Time %d: Bucket full! Packet dropped.\n", time);
+            total_packets += packet_size;
+            dropped = 0;
         }
-        
-        // Leak packets at a fixed rate
-        if (bucket > 0) {
-            bucket -= LEAK_RATE;
-            if(bucket < 0) bucket = 0;
-            printf("Time %d: Packet leaked. Bucket size: %d\n", time, bucket);
-        }
-        
-        sleep(1); // Wait for 1 second (simulate time)
+
+        printf("Packets in bucket: %d |", total_packets);
+        int sent = (total_packets < output_rate) ? total_packets : output_rate;
+        total_packets -= sent;
+        printf(" Sent: %d | Dropped: %d\n", sent, dropped);
+
+        Sleep(1000); // 1 second delay
     }
-    
+
+    // Send remaining packets after time expires
+    while (total_packets > 0) {
+        int sent = (total_packets < output_rate) ? total_packets : output_rate;
+        total_packets -= sent;
+        printf("Packets in bucket: %d | Sent: %d | Dropped: 0\n", total_packets, sent);
+        Sleep(1000);
+    }
+
     return 0;
 }
-
-// gcc leaky_bucket.c -o leaky_bucket
-// ./leaky_bucket
+// gcc leaky_bucket.c -o leaky_bucket.exe
+// .\leaky_bucket.exe
