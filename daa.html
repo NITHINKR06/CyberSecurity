@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Explanations</title>
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: #0073e6;
+}
+
+section.algorithm {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+h3 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+pre {
+    background-color: #f7f7f7;
+    border-left: 4px solid #0073e6;
+    padding: 10px;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    section.algorithm {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Algorithm Explanations</h1>
+    </header>
+
+    <!-- Selection Sort -->
+    <section class="algorithm">
+        <h2>🔹 1. Selection Sort</h2>
+        <p><strong>Definition:</strong> Selection Sort is a simple comparison-based sorting algorithm that repeatedly selects the minimum element from the unsorted part of the array and swaps it with the first unsorted element.</p>
+        <h3>Explanation:</h3>
+        <p>Start with the first element. Find the smallest element in the remaining array and swap it with the current element. Repeat for the next unsorted element.</p>
+        <pre>
+            for i ← 0 to n-2 do
+                min ← i
+                for j ← i+1 to n-1 do
+                    if A[j] < A[min] then
+                        min ← j
+                swap A[i] with A[min]
+        </pre>
+        <h3>Example:</h3>
+        <p>Array: [29, 10, 14, 37, 13]</p>
+        <h3>Time Complexity:</h3>
+        <p>O(n²) in all cases</p>
+        <h3>Space Complexity:</h3>
+        <p>O(1) (in-place sorting)</p>
+        <h3>Stable:</h3>
+        <p>No</p>
+    </section>
+
+    <!-- Bubble Sort -->
+    <section class="algorithm">
+        <h2>🔹 2. Bubble Sort</h2>
+        <p><strong>Definition:</strong> Bubble Sort is a simple comparison-based sorting algorithm where the largest unsorted element bubbles up to the end of the list after each pass.</p>
+        <h3>Explanation:</h3>
+        <p>In each pass, compare adjacent elements and swap them if they are in the wrong order. Repeat the process until no swaps are needed.</p>
+        <pre>
+            for i ← 0 to n-1 do
+                for j ← 0 to n-i-2 do
+                    if A[j] > A[j+1] then
+                        swap A[j], A[j+1]
+        </pre>
+        <h3>Example:</h3>
+        <p>Array: [5, 3, 8, 4, 2]</p>
+        <h3>Time Complexity:</h3>
+        <p>Best: O(n) (already sorted), Average/Worst: O(n²)</p>
+        <h3>Space Complexity:</h3>
+        <p>O(1)</p>
+        <h3>Stable:</h3>
+        <p>Yes</p>
+    </section>
+
+    <!-- Insertion Sort -->
+    <section class="algorithm">
+        <h2>🔹 3. Insertion Sort</h2>
+        <p><strong>Definition:</strong> Insertion Sort is a comparison-based sorting algorithm that builds the sorted list one element at a time by repeatedly picking the next element and inserting it into the correct position.</p>
+        <h3>Explanation:</h3>
+        <p>Iterate through the list, take the current element, and insert it into its correct position in the already sorted part of the list.</p>
+        <pre>
+            for i ← 1 to n-1 do
+                key ← A[i]
+                j ← i - 1
+                while j >= 0 and A[j] > key do
+                    A[j+1] ← A[j]
+                    j ← j - 1
+                A[j+1] ← key
+        </pre>
+        <h3>Example:</h3>
+        <p>Array: [5, 2, 9, 1, 5, 6]</p>
+        <h3>Time Complexity:</h3>
+        <p>Best: O(n) (already sorted), Average/Worst: O(n²)</p>
+        <h3>Space Complexity:</h3>
+        <p>O(1)</p>
+        <h3>Stable:</h3>
+        <p>Yes</p>
+    </section>
+
+    <!-- Merge Sort -->
+    <section class="algorithm">
+        <h2>🔹 4. Merge Sort</h2>
+        <p><strong>Definition:</strong> Merge Sort is a divide-and-conquer sorting algorithm that divides the array into two halves, recursively sorts them, and merges them back together.</p>
+        <h3>Explanation:</h3>
+        <p>Divide the array into two halves. Recursively sort each half. Merge the sorted halves back together into a single sorted array.</p>
+        <pre>
+            function mergeSort(A):
+                if length(A) ≤ 1:
+                    return A
+                mid ← length(A) / 2
+                left ← mergeSort(A[0..mid-1])
+                right ← mergeSort(A[mid..end])
+                return merge(left, right)
+
+            function merge(left, right):
+                result ← empty array
+                while left and right are not empty:
+                    if left[0] < right[0]:
+                        result.append(left[0])
+                        left.remove(0)
+                    else:
+                        result.append(right[0])
+                        right.remove(0)
+                return result + left + right
+        </pre>
+        <h3>Example:</h3>
+        <p>Array: [38, 27, 43, 3, 9, 82, 10]</p>
+        <h3>Time Complexity:</h3>
+        <p>O(n log n) in all cases</p>
+        <h3>Space Complexity:</h3>
+        <p>O(n)</p>
+        <h3>Stable:</h3>
+        <p>Yes</p>
+    </section>
+
+    <!-- Quick Sort -->
+    <section class="algorithm">
+        <h2>🔹 5. Quick Sort</h2>
+        <p><strong>Definition:</strong> Quick Sort is a divide-and-conquer sorting algorithm that selects a pivot element and partitions the array around the pivot such that elements less than the pivot are on the left, and elements greater than the pivot are on the right.</p>
+        <h3>Explanation:</h3>
+        <p>Choose a pivot element. Partition the array into two halves based on the pivot. Recursively sort the left and right halves.</p>
+        <pre>
+            function quickSort(A, low, high):
+                if low < high:
+                    pivotIndex ← partition(A, low, high)
+                    quickSort(A, low, pivotIndex - 1)
+                    quickSort(A, pivotIndex + 1, high)
+
+            function partition(A, low, high):
+                pivot ← A[high]
+                i ← low - 1
+                for j ← low to high-1:
+                    if A[j] < pivot:
+                        i ← i + 1
+                        swap A[i] with A[j]
+                swap A[i+1] with A[high]
+                return i + 1
+        </pre>
+        <h3>Example:</h3>
+        <p>Array: [10, 80, 30, 90, 40, 50, 70]</p>
+        <h3>Time Complexity:</h3>
+        <p>Best/Average: O(n log n), Worst: O(n²)</p>
+        <h3>Space Complexity:</h3>
+        <p>O(log n) for recursive calls</p>
+        <h3>Stable:</h3>
+        <p>No</p>
+    </section>
+
+    <!-- Heap Sort -->
+    <section class="algorithm">
+        <h2>🔹 6. Heap Sort</h2>
+        <p><strong>Definition:</strong> Heap Sort is a comparison-based sorting algorithm based on a binary heap data structure. It uses a max-heap to sort elements in descending order and a min-heap for ascending order.</p>
+        <h3>Explanation:</h3>
+        <p>Build a max-heap from the array. Swap the root (maximum element) with the last element. Reduce the heap size and heapify the root. Repeat until the heap is empty.</p>
+        <pre>
+            function heapify(A, n, i):
+                largest ← i
+                left ← 2*i + 1
+                right ← 2*i + 2
+                if left < n and A[left] > A[largest]:
+                    largest ← left
+                if right < n and A[right] > A[largest]:
+                    largest ← right
+                if largest ≠ i:
+                    swap A[i] with A[largest]
+                    heapify(A, n, largest)
+
+            function heapSort(A):
+                n ← length(A)
+                for i ← n/2 - 1 to 0 do
+                    heapify(A, n, i)
+                for i ← n-1 to 1 do
+                    swap A[0] with A[i]
+                    heapify(A, i, 0)
+        </pre>
+        <h3>Example:</h3>
+        <p>Array: [12, 11, 13, 5, 6, 7]</p>
+        <h3>Time Complexity:</h3>
+        <p>O(n log n) in all cases</p>
+        <h3>Space Complexity:</h3>
+        <p>O(1)</p>
+        <h3>Stable:</h3>
+        <p>No</p>
+    </section>
+
+    <!-- Radix Sort -->
+    <section class="algorithm">
+        <h2>🔹 7. Radix Sort</h2>
+        <p><strong>Definition:</strong> Radix Sort is a non-comparative sorting algorithm that sorts numbers by processing individual digits. It processes the digits from the least significant digit to the most significant digit or vice versa.</p>
+        <h3>Explanation:</h3>
+        <p>Group the numbers by their least significant digit and sort them. Repeat the process for the next digit, moving from the least significant to the most significant.</p>
+        <pre>
+            function radixSort(A):
+                max ← findMax(A)
+                exp ← 1
+                while max / exp > 0:
+                    countSort(A, exp)
+
+            function countSort(A, exp):
+                output ← array of size A.length
+                count ← array of size 10 initialized to 0
+                for i ← 0 to A.length-1:
+                    index ← (A[i] / exp) % 10
+                    count[index]++
+                for i ← 1 to 9:
+                    count[i] += count[i - 1]
+                for i ← A.length-1 to 0:
+                    index ← (A[i] / exp) % 10
+                    output[count[index] - 1] ← A[i]
+                    count[index]--
+                A ← output
+        </pre>
+        <h3>Example:</h3>
+        <p>Array: [170, 45, 75, 90, 802, 24, 2, 66]</p>
+        <h3>Time Complexity:</h3>
+        <p>O(nk), where n is the number of elements and k is the number of digits</p>
+        <h3>Space Complexity:</h3>
+        <p>O(n)</p>
+        <h3>Stable:</h3>
+        <p>Yes</p>
+    </section>
+
+    <!-- Further algorithms can be added below -->
+</body>
+</html>
