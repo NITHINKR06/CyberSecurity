@@ -1,305 +1,667 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorithm Explanations</title>
-    <style>
-      * {
-    margin: 0;
-    padding: 0;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Comprehensive Algorithm Reference</title>
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
     box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+  }
+  body {
+    margin: 0; padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f8fa;
+    color: #222;
     line-height: 1.6;
-}
-
-header {
-    background-color: #333;
-    color: white;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1 {
     text-align: center;
-    padding: 1rem 0;
-}
-
-h1 {
-    font-size: 2rem;
-}
-
-h2 {
-    margin-top: 2rem;
-    font-size: 1.5rem;
-    color: #0073e6;
-}
-
-section.algorithm {
-    background-color: white;
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-p {
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-h3 {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: #555;
-}
-
-pre {
-    background-color: #f7f7f7;
-    border-left: 4px solid #0073e6;
-    padding: 10px;
-    font-size: 1rem;
+    font-weight: 900;
+    font-size: 2.8rem;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.05em;
+    color: #1a73e8;
+  }
+  h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    color: #0f4c81;
+    border-bottom: 3px solid #1a73e8;
+    padding-bottom: 0.3rem;
+  }
+  h3 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.3rem;
+    color: #1a73e8;
+    font-weight: 700;
+  }
+  p {
+    margin: 0.25rem 0 1rem;
+  }
+  pre {
+    background: #222f3e;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'Source Code Pro', monospace, monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0.5rem 0 1rem;
     white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-@media (max-width: 768px) {
-    section.algorithm {
-        width: 95%;
-        padding: 15px;
+  }
+  code {
+    font-family: 'Source Code Pro', monospace, monospace;
+    font-size: 0.95rem;
+  }
+  .section-content {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgb(26 115 232 / 0.1);
+    margin-bottom: 2rem;
+  }
+  .definition {
+    font-weight: 600;
+    font-style: italic;
+    color: #333;
+  }
+  .example {
+    background: #eaf1fb;
+    border-left: 5px solid #1a73e8;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0 1rem;
+    font-style: italic;
+    color: #0f4c81;
+  }
+  .complexity {
+    font-weight: 600;
+    margin: 0.25rem 0 1rem;
+    color: #444;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 0.5rem 0.8rem;
+      font-size: 14px;
     }
-
     h1 {
-        font-size: 1.5rem;
+      font-size: 2rem;
     }
-
     h2 {
-        font-size: 1.3rem;
+      font-size: 1.4rem;
     }
-}
-
-    </style>
+    pre {
+      font-size: 0.8rem;
+    }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Algorithm Explanations</h1>
-    </header>
+<h1>Comprehensive Algorithm Reference</h1>
 
-    <!-- Selection Sort -->
-    <section class="algorithm">
-        <h2>🔹 1. Selection Sort</h2>
-        <p><strong>Definition:</strong> Selection Sort is a simple comparison-based sorting algorithm that repeatedly selects the minimum element from the unsorted part of the array and swaps it with the first unsorted element.</p>
-        <h3>Explanation:</h3>
-        <p>Start with the first element. Find the smallest element in the remaining array and swap it with the current element. Repeat for the next unsorted element.</p>
-        <pre>
-            for i ← 0 to n-2 do
-                min ← i
-                for j ← i+1 to n-1 do
-                    if A[j] < A[min] then
-                        min ← j
-                swap A[i] with A[min]
-        </pre>
-        <h3>Example:</h3>
-        <p>Array: [29, 10, 14, 37, 13]</p>
-        <h3>Time Complexity:</h3>
-        <p>O(n²) in all cases</p>
-        <h3>Space Complexity:</h3>
-        <p>O(1) (in-place sorting)</p>
-        <h3>Stable:</h3>
-        <p>No</p>
-    </section>
+<section class="section-content" id="selection-sort">
+  <h2>🔹 1. Selection Sort</h2>
+  <p class="definition">Definition: Selection Sort is a simple comparison-based sorting algorithm. It divides the array into a sorted and unsorted part and repeatedly selects the smallest element from the unsorted part and moves it to the sorted part.</p>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>Start with the first element.</li>
+    <li>Find the smallest element in the remaining array.</li>
+    <li>Swap it with the first element.</li>
+    <li>Repeat this for all positions.</li>
+  </ul>
+  <h3>Pseudocode:</h3>
+  <pre>for i ← 0 to n-2 do
+    min ← i
+    for j ← i+1 to n-1 do
+        if A[j] &lt; A[min] then
+            min ← j
+    swap A[i] with A[min]</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [29, 10, 14, 37, 13]<br />
+    Step 1: Smallest is 10 → swap with 29 → [10, 29, 14, 37, 13]<br />
+    Step 2: Smallest in [29,14,37,13] is 13 → [10, 13, 14, 37, 29] ... and so on.
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n²) in all cases (best, average, worst)<br />
+  <strong>Space Complexity:</strong> O(1) (in-place sorting)<br />
+  <strong>Stable:</strong> No (relative order of equal elements not preserved)</p>
+</section>
 
-    <!-- Bubble Sort -->
-    <section class="algorithm">
-        <h2>🔹 2. Bubble Sort</h2>
-        <p><strong>Definition:</strong> Bubble Sort is a simple comparison-based sorting algorithm where the largest unsorted element bubbles up to the end of the list after each pass.</p>
-        <h3>Explanation:</h3>
-        <p>In each pass, compare adjacent elements and swap them if they are in the wrong order. Repeat the process until no swaps are needed.</p>
-        <pre>
-            for i ← 0 to n-1 do
-                for j ← 0 to n-i-2 do
-                    if A[j] > A[j+1] then
-                        swap A[j], A[j+1]
-        </pre>
-        <h3>Example:</h3>
-        <p>Array: [5, 3, 8, 4, 2]</p>
-        <h3>Time Complexity:</h3>
-        <p>Best: O(n) (already sorted), Average/Worst: O(n²)</p>
-        <h3>Space Complexity:</h3>
-        <p>O(1)</p>
-        <h3>Stable:</h3>
-        <p>Yes</p>
-    </section>
+<section class="section-content" id="bubble-sort">
+  <h2>🔹 2. Bubble Sort</h2>
+  <p class="definition">Definition: Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.</p>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>In each pass, the largest unsorted element “bubbles” to the end.</li>
+    <li>Repeats until the list is sorted.</li>
+  </ul>
+  <h3>Pseudocode:</h3>
+  <pre>for i ← 0 to n-1 do
+    for j ← 0 to n-i-2 do
+        if A[j] &gt; A[j+1] then
+            swap A[j], A[j+1]</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [5, 3, 8, 4, 2]<br />
+    Pass 1: [3, 5, 4, 2, 8]<br />
+    Pass 2: [3, 4, 2, 5, 8]<br />
+    Pass 3: [3, 2, 4, 5, 8]<br />
+    Pass 4: [2, 3, 4, 5, 8]
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong><br />
+  Best: O(n) (already sorted)<br />
+  Average/Worst: O(n²)<br />
+  <strong>Space Complexity:</strong> O(1)<br />
+  <strong>Stable:</strong> Yes</p>
+</section>
 
-    <!-- Insertion Sort -->
-    <section class="algorithm">
-        <h2>🔹 3. Insertion Sort</h2>
-        <p><strong>Definition:</strong> Insertion Sort is a comparison-based sorting algorithm that builds the sorted list one element at a time by repeatedly picking the next element and inserting it into the correct position.</p>
-        <h3>Explanation:</h3>
-        <p>Iterate through the list, take the current element, and insert it into its correct position in the already sorted part of the list.</p>
-        <pre>
-            for i ← 1 to n-1 do
-                key ← A[i]
-                j ← i - 1
-                while j >= 0 and A[j] > key do
-                    A[j+1] ← A[j]
-                    j ← j - 1
-                A[j+1] ← key
-        </pre>
-        <h3>Example:</h3>
-        <p>Array: [5, 2, 9, 1, 5, 6]</p>
-        <h3>Time Complexity:</h3>
-        <p>Best: O(n) (already sorted), Average/Worst: O(n²)</p>
-        <h3>Space Complexity:</h3>
-        <p>O(1)</p>
-        <h3>Stable:</h3>
-        <p>Yes</p>
-    </section>
+<section class="section-content" id="merge-sort">
+  <h2>🔹 3. Merge Sort</h2>
+  <p class="definition">Definition: Merge Sort is a divide-and-conquer algorithm. It divides the input array into two halves, recursively sorts them, and then merges the two sorted halves.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Divide the unsorted list into sublists until each contains a single element.</li>
+    <li>Merge sublists to produce new sorted sublists.</li>
+    <li>Repeat until one sorted list remains.</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>function MergeSort(A, low, high):
+    if low &lt; high:
+        mid ← (low + high)/2
+        MergeSort(A, low, mid)
+        MergeSort(A, mid+1, high)
+        Merge(A, low, mid, high)</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [38, 27, 43, 3, 9]<br />
+    Divide: [38, 27], [43, 3, 9] → [38], [27], [43], [3], [9]<br />
+    Merge: [27, 38], [3, 9, 43] → [3, 9, 27, 38, 43]
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n log n) for all cases<br />
+  <strong>Space Complexity:</strong> O(n) (temporary arrays)<br />
+  <strong>Stable:</strong> Yes</p>
+</section>
 
-    <!-- Merge Sort -->
-    <section class="algorithm">
-        <h2>🔹 4. Merge Sort</h2>
-        <p><strong>Definition:</strong> Merge Sort is a divide-and-conquer sorting algorithm that divides the array into two halves, recursively sorts them, and merges them back together.</p>
-        <h3>Explanation:</h3>
-        <p>Divide the array into two halves. Recursively sort each half. Merge the sorted halves back together into a single sorted array.</p>
-        <pre>
-            function mergeSort(A):
-                if length(A) ≤ 1:
-                    return A
-                mid ← length(A) / 2
-                left ← mergeSort(A[0..mid-1])
-                right ← mergeSort(A[mid..end])
-                return merge(left, right)
+<section class="section-content" id="quick-sort">
+  <h2>🔹 4. Quick Sort</h2>
+  <p class="definition">Definition: Quick Sort is a divide-and-conquer algorithm that picks a pivot element, partitions the array into two parts, and then recursively applies the same logic.</p>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>Choose a pivot (commonly the last element).</li>
+    <li>Rearrange the array so that all elements less than pivot are on the left, and greater on the right.</li>
+    <li>Recursively apply the same logic to the subarrays.</li>
+  </ul>
+  <h3>Pseudocode:</h3>
+  <pre>function QuickSort(A, low, high):
+    if low &lt; high:
+        pivot ← Partition(A, low, high)
+        QuickSort(A, low, pivot-1)
+        QuickSort(A, pivot+1, high)</pre>
+  <h3>Partition Function:</h3>
+  <pre>function Partition(A, low, high):
+    pivot ← A[high]
+    i ← low - 1
+    for j ← low to high - 1:
+        if A[j] ≤ pivot:
+            i ← i + 1
+            swap A[i], A[j]
+    swap A[i+1], A[high]
+    return i + 1</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [10, 7, 8, 9, 1, 5], Pivot = 5<br />
+    After Partition: [1, 5, 8, 9, 10, 7] and recurse on each side
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong><br />
+  Best/Average: O(n log n)<br />
+  Worst: O(n²) (when array is already sorted and pivot is worst)<br />
+  <strong>Space Complexity:</strong> O(log n) (recursive stack)<br />
+  <strong>Stable:</strong> No</p>
+</section>
 
-            function merge(left, right):
-                result ← empty array
-                while left and right are not empty:
-                    if left[0] < right[0]:
-                        result.append(left[0])
-                        left.remove(0)
-                    else:
-                        result.append(right[0])
-                        right.remove(0)
-                return result + left + right
-        </pre>
-        <h3>Example:</h3>
-        <p>Array: [38, 27, 43, 3, 9, 82, 10]</p>
-        <h3>Time Complexity:</h3>
-        <p>O(n log n) in all cases</p>
-        <h3>Space Complexity:</h3>
-        <p>O(n)</p>
-        <h3>Stable:</h3>
-        <p>Yes</p>
-    </section>
+<section class="section-content" id="sequential-search">
+  <h2>🔹 5. Sequential Search</h2>
+  <p class="definition">Definition: Also known as linear search, it checks each element of the list until the desired element is found or the list ends.</p>
+  <h3>Pseudocode:</h3>
+  <pre>for i ← 0 to n-1 do
+    if A[i] == key:
+        return i
+return -1</pre>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>Begin from the first element.</li>
+    <li>Compare each element to the target value.</li>
+    <li>Return index if found, else return -1.</li>
+  </ul>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [4, 2, 7, 1, 3], Key: 7 → Found at index 2
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong><br />
+  Best: O(1) (if first element)<br />
+  Worst: O(n) (if not found or at last index)</p>
+</section>
 
-    <!-- Quick Sort -->
-    <section class="algorithm">
-        <h2>🔹 5. Quick Sort</h2>
-        <p><strong>Definition:</strong> Quick Sort is a divide-and-conquer sorting algorithm that selects a pivot element and partitions the array around the pivot such that elements less than the pivot are on the left, and elements greater than the pivot are on the right.</p>
-        <h3>Explanation:</h3>
-        <p>Choose a pivot element. Partition the array into two halves based on the pivot. Recursively sort the left and right halves.</p>
-        <pre>
-            function quickSort(A, low, high):
-                if low < high:
-                    pivotIndex ← partition(A, low, high)
-                    quickSort(A, low, pivotIndex - 1)
-                    quickSort(A, pivotIndex + 1, high)
+<section class="section-content" id="binary-search">
+  <h2>🔹 6. Binary Search</h2>
+  <p class="definition">Definition: Binary Search is an efficient algorithm for finding an item in a <em>sorted</em> array by repeatedly dividing the search interval in half.</p>
+  <h3>Pseudocode:</h3>
+  <pre>low ← 0
+high ← n - 1
+while low ≤ high:
+    mid ← (low + high) / 2
+    if A[mid] == key:
+        return mid
+    else if key &lt; A[mid]:
+        high ← mid - 1
+    else:
+        low ← mid + 1
+return -1</pre>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>Find the middle element.</li>
+    <li>If it matches the key, return the index.</li>
+    <li>If key is smaller, search the left half.</li>
+    <li>If key is larger, search the right half.</li>
+  </ul>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [1, 3, 5, 7, 9], Key: 5 → Mid = 2 → Found
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(log n)<br />
+  <strong>Space Complexity:</strong> O(1) for iterative, O(log n) for recursive<br />
+  <strong>Limitation:</strong> Requires sorted input array</p>
+</section>
 
-            function partition(A, low, high):
-                pivot ← A[high]
-                i ← low - 1
-                for j ← low to high-1:
-                    if A[j] < pivot:
-                        i ← i + 1
-                        swap A[i] with A[j]
-                swap A[i+1] with A[high]
-                return i + 1
-        </pre>
-        <h3>Example:</h3>
-        <p>Array: [10, 80, 30, 90, 40, 50, 70]</p>
-        <h3>Time Complexity:</h3>
-        <p>Best/Average: O(n log n), Worst: O(n²)</p>
-        <h3>Space Complexity:</h3>
-        <p>O(log n) for recursive calls</p>
-        <h3>Stable:</h3>
-        <p>No</p>
-    </section>
+<section class="section-content" id="brute-force-string-matching">
+  <h2>🔹 7. Brute Force String Matching</h2>
+  <p class="definition">Definition: Brute Force String Matching is the simplest technique to find a pattern in a text. It checks every possible position in the text where the pattern may occur and compares character by character.</p>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>Compare pattern P with text T starting at position 0.</li>
+    <li>Move the pattern one position forward each time and repeat the comparison.</li>
+    <li>Stop when a match is found or all positions are checked.</li>
+  </ul>
+  <h3>Pseudocode:</h3>
+  <pre>for i ← 0 to n - m do
+    j ← 0
+    while j &lt; m and T[i + j] == P[j] do
+        j ← j + 1
+    if j == m:
+        return i
+return -1</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Text: "ABCABCD", Pattern: "ABC"<br />
+    Match at index 0 → "ABC" == "ABC"
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong><br />
+  Worst-case: O(n * m)<br />
+  Best-case: O(n) (if mismatches early)<br />
+  <strong>Space Complexity:</strong> O(1)<br />
+  <strong>Use Case:</strong> Simple to implement but inefficient for large texts or patterns.</p>
+</section>
 
-    <!-- Heap Sort -->
-    <section class="algorithm">
-        <h2>🔹 6. Heap Sort</h2>
-        <p><strong>Definition:</strong> Heap Sort is a comparison-based sorting algorithm based on a binary heap data structure. It uses a max-heap to sort elements in descending order and a min-heap for ascending order.</p>
-        <h3>Explanation:</h3>
-        <p>Build a max-heap from the array. Swap the root (maximum element) with the last element. Reduce the heap size and heapify the root. Repeat until the heap is empty.</p>
-        <pre>
-            function heapify(A, n, i):
-                largest ← i
-                left ← 2*i + 1
-                right ← 2*i + 2
-                if left < n and A[left] > A[largest]:
-                    largest ← left
-                if right < n and A[right] > A[largest]:
-                    largest ← right
-                if largest ≠ i:
-                    swap A[i] with A[largest]
-                    heapify(A, n, largest)
+<section class="section-content" id="matrix-multiplication">
+  <h2>🔹 8. Matrix Multiplication</h2>
+  <p class="definition">Definition: Matrix multiplication involves multiplying two matrices A and B to produce a result matrix C such that each element C[i][j] is the sum of A[i][k] * B[k][j].</p>
+  <h3>Pseudocode:</h3>
+  <pre>for i ← 0 to n-1:
+    for j ← 0 to n-1:
+        C[i][j] ← 0
+        for k ← 0 to n-1:
+            C[i][j] ← C[i][j] + A[i][k] * B[k][j]</pre>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>Outer loops iterate over row i and column j.</li>
+    <li>Inner loop calculates the dot product of row i of A and column j of B.</li>
+  </ul>
+  <div class="example">
+    <strong>Example:</strong><br />
+    A = [[1, 2], [3, 4]], B = [[2, 0], [1, 2]]<br />
+    C[0][0] = 1*2 + 2*1 = 4<br />
+    C[0][1] = 1*0 + 2*2 = 4
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n³) for naive method<br />
+  <strong>Space Complexity:</strong> O(n²) for result matrix</p>
+</section>
 
-            function heapSort(A):
-                n ← length(A)
-                for i ← n/2 - 1 to 0 do
-                    heapify(A, n, i)
-                for i ← n-1 to 1 do
-                    swap A[0] with A[i]
-                    heapify(A, i, 0)
-        </pre>
-        <h3>Example:</h3>
-        <p>Array: [12, 11, 13, 5, 6, 7]</p>
-        <h3>Time Complexity:</h3>
-        <p>O(n log n) in all cases</p>
-        <h3>Space Complexity:</h3>
-        <p>O(1)</p>
-        <h3>Stable:</h3>
-        <p>No</p>
-    </section>
+<section class="section-content" id="decimal-to-binary">
+  <h2>🔹 9. Decimal to Binary Conversion</h2>
+  <p class="definition">Definition: Convert a decimal number to binary by repeatedly dividing the number by 2 and noting the remainder.</p>
+  <h3>Pseudocode:</h3>
+  <pre>while n &gt; 0:
+    print(n % 2)
+    n ← n // 2</pre>
+  <h3>Explanation:</h3>
+  <ul>
+    <li>Divide the number by 2.</li>
+    <li>Remainders give binary digits from LSB to MSB.</li>
+    <li>Read the remainders in reverse order for final binary number.</li>
+  </ul>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Decimal = 13<br />
+    Steps: 13%2 = 1, 6%2 = 0, 3%2 = 1, 1%2 = 1 → Binary = 1101
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(log n)<br />
+  <strong>Space Complexity:</strong> O(log n) (due to bit storage)</p>
+</section>
 
-    <!-- Radix Sort -->
-    <section class="algorithm">
-        <h2>🔹 7. Radix Sort</h2>
-        <p><strong>Definition:</strong> Radix Sort is a non-comparative sorting algorithm that sorts numbers by processing individual digits. It processes the digits from the least significant digit to the most significant digit or vice versa.</p>
-        <h3>Explanation:</h3>
-        <p>Group the numbers by their least significant digit and sort them. Repeat the process for the next digit, moving from the least significant to the most significant.</p>
-        <pre>
-            function radixSort(A):
-                max ← findMax(A)
-                exp ← 1
-                while max / exp > 0:
-                    countSort(A, exp)
+<section class="section-content" id="find-max-element">
+  <h2>🔹 10. Find Maximum Element in Array</h2>
+  <p class="definition">Definition: This algorithm scans through the array and returns the largest value.</p>
+  <h3>Pseudocode:</h3>
+  <pre>max ← A[0]
+for i ← 1 to n-1:
+    if A[i] &gt; max:
+        max ← A[i]
+return max</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [5, 17, 3, 9] → Max = 17
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n)<br />
+  <strong>Space Complexity:</strong> O(1)</p>
+</section>
 
-            function countSort(A, exp):
-                output ← array of size A.length
-                count ← array of size 10 initialized to 0
-                for i ← 0 to A.length-1:
-                    index ← (A[i] / exp) % 10
-                    count[index]++
-                for i ← 1 to 9:
-                    count[i] += count[i - 1]
-                for i ← A.length-1 to 0:
-                    index ← (A[i] / exp) % 10
-                    output[count[index] - 1] ← A[i]
-                    count[index]--
-                A ← output
-        </pre>
-        <h3>Example:</h3>
-        <p>Array: [170, 45, 75, 90, 802, 24, 2, 66]</p>
-        <h3>Time Complexity:</h3>
-        <p>O(nk), where n is the number of elements and k is the number of digits</p>
-        <h3>Space Complexity:</h3>
-        <p>O(n)</p>
-        <h3>Stable:</h3>
-        <p>Yes</p>
-    </section>
+<section class="section-content" id="find-unique-elements">
+  <h2>🔹 11. Find Unique Elements in Array</h2>
+  <p class="definition">Definition: Check whether all elements in the array are unique.</p>
+  <h3>Pseudocode:</h3>
+  <pre>for i ← 0 to n-1:
+    for j ← i+1 to n-1:
+        if A[i] == A[j]:
+            return False
+return True</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Array: [3, 1, 4, 2] → All unique → returns True<br />
+    Array: [3, 1, 4, 1] → Duplicate → returns False
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n²) (brute-force)<br />
+  Optimized: O(n log n) with sorting or O(n) with hash set<br />
+  <strong>Space Complexity:</strong> O(1) (brute-force)</p>
+</section>
 
-    <!-- Further algorithms can be added below -->
+<section class="section-content" id="horspool-string-matching">
+  <h2>🔹 12. Horspool’s String Matching Algorithm</h2>
+  <p class="definition">Definition: Horspool’s algorithm improves over brute force by using a shift table to skip unnecessary comparisons.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Preprocess pattern P to build a shift table.</li>
+    <li>Compare pattern from right to left.</li>
+    <li>On mismatch, use shift table to jump ahead.</li>
+  </ol>
+  <h3>Pseudocode Overview:</h3>
+  <pre>BuildShiftTable(P)
+Set i = m-1 (end of pattern)
+while i &lt; n:
+    compare P from end with T[i]
+    if match → report position
+    else shift using table</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Text: "abcdabcxabcdabcdabcy"<br />
+    Pattern: "abcdabcy"<br />
+    Mismatch occurs early, so pattern jumps forward efficiently.
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong><br />
+  Best/Average: O(n)<br />
+  Worst-case: O(nm)<br />
+  <strong>Space Complexity:</strong> O(k) where k = alphabet size<br />
+  <strong>Advantage:</strong> Faster than brute force for large texts</p>
+</section>
+
+<section class="section-content" id="prims-algorithm">
+  <h2>🔹 13. Prim’s Algorithm (Minimum Spanning Tree)</h2>
+  <p class="definition">Definition: Prim’s algorithm finds a Minimum Spanning Tree (MST) for a weighted undirected graph. It starts with a single vertex and grows the MST by adding the minimum weight edge from the tree to a vertex not yet in the tree.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Initialize all vertices as not in MST.</li>
+    <li>Choose a starting vertex and mark it as part of MST.</li>
+    <li>At each step, pick the smallest edge that connects a vertex in MST to a vertex not in MST.</li>
+    <li>Repeat until all vertices are included.</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>Initialize key[] ← ∞, parent[] ← -1, MST[] ← false
+key[0] ← 0
+for count ← 0 to V-1:
+    u ← vertex with minimum key[] not in MST
+    MST[u] ← true
+    for each neighbor v of u:
+        if weight[u][v] &lt; key[v] and v not in MST:
+            parent[v] ← u
+            key[v] ← weight[u][v]</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Graph: A-B (2), A-C (3), B-C (1), B-D (4), C-D (5)<br />
+    Start at A → MST edges: A-B, B-C, B-D with total weight = 7
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(V²) with adjacency matrix, O(E log V) with priority queue + adjacency list<br />
+  <strong>Space Complexity:</strong> O(V)</p>
+</section>
+
+<section class="section-content" id="kruskals-algorithm">
+  <h2>🔹 14. Kruskal’s Algorithm (Minimum Spanning Tree)</h2>
+  <p class="definition">Definition: Kruskal’s algorithm builds the MST by sorting all the edges by weight and adding them one by one to the MST if they don’t form a cycle.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Sort all edges in non-decreasing order of weights.</li>
+    <li>Initialize MST as empty.</li>
+    <li>For each edge (u, v):</li>
+    <ul>
+      <li>If u and v are in different sets, add the edge to MST and union their sets.</li>
+    </ul>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>Sort all edges by weight
+Initialize parent[] for union-find
+for each edge (u, v):
+    if find(u) ≠ find(v):
+        add (u, v) to MST
+        union(u, v)</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Same graph as above. Edges in order: B-C (1), A-B (2), A-C (3), B-D (4), C-D (5)<br />
+    Pick B-C, A-B, B-D → MST weight = 7
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(E log E) due to sorting edges<br />
+  <strong>Space Complexity:</strong> O(V) with union-find structure</p>
+</section>
+
+<section class="section-content" id="dijkstras-algorithm">
+  <h2>🔹 15. Dijkstra’s Algorithm (Single Source Shortest Path)</h2>
+  <p class="definition">Definition: Dijkstra’s algorithm finds the shortest path from a source node to all other nodes in a weighted graph with non-negative weights.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Set distance to all vertices as ∞ and source as 0.</li>
+    <li>Use a priority queue to pick the minimum distance vertex not yet processed.</li>
+    <li>Update distances of its adjacent vertices if a shorter path is found.</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>Initialize dist[] ← ∞, dist[source] ← 0
+Create a min-priority queue of all vertices
+while queue is not empty:
+    u ← extract-min
+    for each neighbor v of u:
+        if dist[u] + weight(u, v) &lt; dist[v]:
+            dist[v] ← dist[u] + weight(u, v)</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Graph with edges: A-B(4), A-C(1), C-B(2), B-D(1), C-D(5)<br />
+    From A → A-C = 1, C-B = 3, B-D = 4
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong><br />
+  O(V²) with array<br />
+  O((V + E) log V) with priority queue<br />
+  <strong>Space Complexity:</strong> O(V)</p>
+</section>
+
+<section class="section-content" id="huffman-coding">
+  <h2>🔹 16. Huffman Coding</h2>
+  <p class="definition">Definition: Huffman Coding is a greedy algorithm used for lossless data compression. It assigns shorter binary codes to more frequent characters and longer codes to less frequent ones.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Create a min-heap with all characters and their frequencies.</li>
+    <li>While the heap has more than one node:</li>
+    <ul>
+      <li>Extract the two nodes with the smallest frequency.</li>
+      <li>Create a new internal node with their sum as frequency.</li>
+      <li>Insert the new node back into the heap.</li>
+    </ul>
+    <li>The remaining node is the root of the Huffman Tree.</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>Build a priority queue (min-heap) with all characters
+while heap.size &gt; 1:
+    left ← extractMin()
+    right ← extractMin()
+    newNode ← internal node with freq = left.freq + right.freq
+    newNode.left = left, newNode.right = right
+    insert newNode into heap
+Return root of Huffman Tree</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Characters: A:5, B:9, C:12, D:13, E:16, F:45<br />
+    Huffman Tree gives codes like: F=0, C=100, D=101, etc.
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n log n) where n = number of characters<br />
+  <strong>Space Complexity:</strong> O(n)</p>
+</section>
+
+<section class="section-content" id="floyd-warshall">
+  <h2>🔹 17. Floyd-Warshall Algorithm (All-Pairs Shortest Path)</h2>
+  <p class="definition">Definition: The Floyd-Warshall algorithm finds shortest paths between all pairs of vertices in a weighted graph (can handle negative weights, but not negative cycles).</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Initialize distance matrix dist with edge weights.</li>
+    <li>For each vertex k, update dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>for k ← 1 to n:
+    for i ← 1 to n:
+        for j ← 1 to n:
+            if dist[i][k] + dist[k][j] &lt; dist[i][j]:
+                dist[i][j] ← dist[i][k] + dist[k][j]</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Initial matrix:<br />
+    0   5   ∞   10<br />
+    ∞   0   3   ∞<br />
+    ∞   ∞   0   1<br />
+    ∞   ∞   ∞   0<br />
+    After running the algorithm, we get shortest distances between all pairs.
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n³)<br />
+  <strong>Space Complexity:</strong> O(n²)</p>
+</section>
+
+<section class="section-content" id="warshalls-algorithm">
+  <h2>🔹 18. Warshall’s Algorithm (Transitive Closure of a Graph)</h2>
+  <p class="definition">Definition: Warshall’s algorithm computes the transitive closure of a directed graph — determining which vertices are reachable from each vertex.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Use the adjacency matrix of the graph.</li>
+    <li>For each intermediate vertex k, update path[i][j] = path[i][j] OR (path[i][k] AND path[k][j])</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>for k ← 0 to n-1:
+    for i ← 0 to n-1:
+        for j ← 0 to n-1:
+            path[i][j] ← path[i][j] or (path[i][k] and path[k][j])</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Adjacency matrix:<br />
+    0 1 0<br />
+    0 0 1<br />
+    1 0 0<br />
+    After applying Warshall's algorithm, the matrix tells you reachability between all vertex pairs.
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(n³)<br />
+  <strong>Space Complexity:</strong> O(n²)</p>
+</section>
+
+<section class="section-content" id="knapsack-problem">
+  <h2>🔹 19. 0/1 Knapsack Problem (Dynamic Programming)</h2>
+  <p class="definition">Definition: Given n items, each with weight w[i] and value v[i], and a knapsack of capacity W, determine the maximum total value of items that can be put in the knapsack such that each item is either included or excluded (0/1).</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Define dp[i][w] as the max value using first i items with total weight w.</li>
+    <li>For each item i:</li>
+    <ul>
+      <li>If w[i] &gt; w: not included → dp[i][w] = dp[i-1][w]</li>
+      <li>Else: included or not → dp[i][w] = max(dp[i-1][w], v[i] + dp[i-1][w - w[i]])</li>
+    </ul>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>for i ← 0 to n:
+    for w ← 0 to W:
+        if i == 0 or w == 0:
+            dp[i][w] ← 0
+        else if wt[i-1] ≤ w:
+            dp[i][w] ← max(val[i-1] + dp[i-1][w-wt[i-1]], dp[i-1][w])
+        else:
+            dp[i][w] ← dp[i-1][w]</pre>
+  <div class="example">
+    <strong>Example:</strong><br />
+    Items: val = [60, 100, 120], wt = [10, 20, 30], Capacity = 50<br />
+    Max value: 220 (items 2 and 3)
+  </div>
+  <p class="complexity"><strong>Time Complexity:</strong> O(nW)<br />
+  <strong>Space Complexity:</strong> O(nW) (can be reduced to O(W) using 1D array)</p>
+</section>
+
+<section class="section-content" id="n-queens">
+  <h2>🔹 20. N-Queens Problem (Backtracking)</h2>
+  <p class="definition">Definition: Place N queens on an N×N chessboard such that no two queens threaten each other (no two queens share the same row, column, or diagonal).</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>Place a queen row by row.</li>
+    <li>At each step, check if current position is safe.</li>
+    <li>If safe, place the queen and recurse.</li>
+    <li>If a solution is found, print it.</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>function solveNQueens(row):
+    if row == N:
+        print board
+        return
+    for col ← 0 to N-1:
+        if isSafe(row, col):
+            placeQueen(row, col)
+            solveNQueens(row + 1)
+            removeQueen(row, col)</pre>
+  <p class="complexity"><strong>Time Complexity:</strong> O(N!)<br />
+  <strong>Space Complexity:</strong> O(N²) for board or O(N) with arrays</p>
+</section>
+
+<section class="section-content" id="subset-sum">
+  <h2>🔹 21. Subset Sum Problem (Backtracking)</h2>
+  <p class="definition">Definition: Given a set of integers and a value sum, determine if a subset exists whose sum equals the given value.</p>
+  <h3>Steps:</h3>
+  <ol>
+    <li>At each step, include or exclude the current item.</li>
+    <li>If sum becomes 0 → return true.</li>
+    <li>If end of array is reached → return false.</li>
+  </ol>
+  <h3>Pseudocode:</h3>
+  <pre>function isSubsetSum(i, sum):
+    if sum == 0: return true
+    if i == n: return false
+    if A[i] &gt; sum:
+        return isSubsetSum(i+1, sum)
+    return isSubsetSum(i+1, sum) or isSubsetSum(i+1, sum - A[i])</pre>
+  <p class="complexity"><strong>Time Complexity:</strong> O(2^n)<br />
+  <strong>Space Complexity:</strong> O(n)</p>
+</section>
+
 </body>
 </html>
+
